@@ -5,6 +5,8 @@ extends Node3D
 @export var chunkLength:float = 4
 @export var speed:float = 12
 
+ func game_over():
+	pass
 
 func _ready():
 	for i in range(chunkCount):
@@ -24,3 +26,8 @@ func _process(delta):
 			print("Removing old chunk")
 			c.queue_free()
 			generate_chunk()
+
+func reset():
+	for c in get_children():
+		c.queue_free()
+	_ready()
