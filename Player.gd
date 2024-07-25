@@ -9,4 +9,4 @@ func _process(delta):
 func _on_body_entered(body):
 	# if object is obstacle
 	if body.get_collision_layer() == 2:
-		print("Game over")
+		GameManager.game_over.emit()

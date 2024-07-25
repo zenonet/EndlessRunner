@@ -19,4 +19,4 @@ use_collision = true
 size = Vector3(0.1, 1, 8)
 
 [node name="tree1" parent="." instance=ExtResource("1_c2w2c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0978898, 0, 0.389701)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.505358, 0, 0.389701)
