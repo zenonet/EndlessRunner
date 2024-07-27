@@ -4,13 +4,14 @@ var currentSpeed = 12.5
 const avoidanceDistance = 1.2
 @export var isPlayerControlled:bool = false
 
-const SPEED = 0.05
+const SPEED = 8
 
 @onready var targetX:float = position.x 
+@onready var playerPosition = $PlayerPosition.position
 func _process(delta):
 	if isPlayerControlled:
 		var input = Input.get_axis("right", "left")
-		position.x += input * SPEED
+		position.x += input * SPEED * delta
 	else:
 		var relativeSpeed:float = currentSpeed - GameManager.playerSpeed
 		global_position.z += relativeSpeed*delta
@@ -23,5 +24,5 @@ func on_avoidance_trigger_detected(direction:int):
 
 func _on_body_entered(body):
 	# if object is obstacle
-	if isPlayerControlled && body.get_collision_layer() == 2:
+	if isPlayerControlled and body.is_in_group("obstacles"):
 		GameManager.game_over.emit()

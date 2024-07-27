@@ -5,8 +5,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_0iwrj"]
 size = Vector3(0.5, 0.66, 1)
 
-[node name="Animal" type="Area3D"]
+[node name="Animal" type="Area3D" groups=["animals"]]
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_wn6xe")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
@@ -14,5 +15,8 @@ size = Vector3(0.5, 0.66, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_0iwrj")
+
+[node name="PlayerPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.344474, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

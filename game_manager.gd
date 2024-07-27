@@ -12,6 +12,7 @@ func _ready():
 	add_child(main.instantiate())
 	
 func on_game_over():
+	print("Game over")
 	distance = 0
 	playerSpeed = 12
 	for c in get_children():

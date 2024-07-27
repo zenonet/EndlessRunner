@@ -18,13 +18,16 @@ transform = Transform3D(-1, 4.50065e-08, -7.49477e-08, -1.51808e-08, 0.754881, 0
 [node name="World" type="Node3D" parent="."]
 script = ExtResource("1_hj7wm")
 chunkScenes = Array[PackedScene]([ExtResource("4_1qysh"), ExtResource("4_1qysh"), ExtResource("2_27w2k"), ExtResource("3_uej5n"), ExtResource("5_b3a8r"), ExtResource("6_y4kkw"), ExtResource("7_i3wbw")])
-chunkCount = 16.0
+chunkCount = 32.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.815441, 0.329721, -0.475752, 1.29073e-09, 0.821905, 0.569624, 0.57884, 0.464495, -0.670215, 3.32127, 0, -0.450444)
 shadow_enabled = true
 
 [node name="Animal" parent="." instance=ExtResource("9_kgqdc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39998, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40251, -2.38419e-07, -0.000854611)
 
-[node name="Animal2" parent="." instance=ExtResource("9_1reu8")]
+[node name="Animal2" parent="." instance=ExtResource("9_kgqdc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0637649, 0, 4.94414)
+
+[node name="PlayerControlledAnimal" parent="." instance=ExtResource("9_1reu8")]

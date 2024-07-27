@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://PlayerCharacter.gd" id="1_p08rg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d1447"]
-size = Vector3(1, 1.5874, 1)
+size = Vector3(3, 10, 3)
 
 [node name="PlayerCharacter" type="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.457772, 0)
@@ -12,7 +12,12 @@ script = ExtResource("1_p08rg")
 
 [node name="AnimalDetectionArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.681141, 0)
+collision_mask = 3
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimalDetectionArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.293701, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.42386, 0)
 shape = SubResource("BoxShape3D_d1447")
+
+[connection signal="area_entered" from="AnimalDetectionArea" to="." method="_on_animal_detection_area_entered"]
+[connection signal="area_exited" from="AnimalDetectionArea" to="." method="_on_animal_detection_area_exited"]
