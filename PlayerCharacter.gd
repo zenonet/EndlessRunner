@@ -34,6 +34,18 @@ func _process(delta):
 				isDecending = true
 		
 		
+		
+func _input(event):
+	var is_drag:bool = event is InputEventScreenDrag or event is InputEventMouseMotion
+	var is_press:bool = !is_drag and event.is_pressed()
+	var is_release:bool = !is_drag and !event.is_pressed()
+	
+	if isFlying && is_press && isAnimalAvailable:
+		isLanding = true
+	
+	if !isFlying && is_release:
+		leave_animal()
+	
 func mount_animal():
 	print("Mounting...")
 	GameManager.playerSpeed -= jumpSpeedIncrease
@@ -42,8 +54,10 @@ func mount_animal():
 	position = availableAnimal.playerPosition
 	isFlying = false
 	isLanding = false
+	availableAnimal.on_player_mounted(self)
 	
 func leave_animal():
+	if isFlying: return
 	GameManager.playerSpeed += jumpSpeedIncrease
 	# Make controlled animal self controlled again
 	get_parent().isPlayerControlled = false

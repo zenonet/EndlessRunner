@@ -19,5 +19,14 @@ shape = SubResource("BoxShape3D_0iwrj")
 [node name="PlayerPosition" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.344474, 0)
 
+[node name="ThrowOffTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="WarningText" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.956702, -0.29107, 0, 0.29107, 0.956702, -0.369626, 0.522152, -0.0124035)
+text = "!"
+font_size = 100
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ThrowOffTimer" to="." method="_on_throw_off_timer_timeout"]
