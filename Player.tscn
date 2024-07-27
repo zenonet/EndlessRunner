@@ -5,12 +5,16 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_jp8r4"]
 size = Vector3(0.626953, 1, 1)
 
-[node name="CharacterController" type="Area3D"]
+[node name="Player" type="Area3D"]
 collision_mask = 3
 script = ExtResource("1_d8f04")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 size = Vector3(0.624023, 1, 1)
+
+[node name="Player" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.651732, 0)
+size = Vector3(0.3, 0.3, 0.3)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_jp8r4")

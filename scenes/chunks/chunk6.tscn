@@ -20,9 +20,11 @@ size = Vector3(0.1, 1, 8)
 
 [node name="tree1" parent="." instance=ExtResource("1_jbk4u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3468, 0, 1.3655)
+direction = 1
 
 [node name="tree2" parent="." instance=ExtResource("1_jbk4u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9945, 0.00550032, 0.53407)
+direction = 1
 
 [node name="tree3" parent="." instance=ExtResource("1_jbk4u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.390093, 0.00526667, 0.17909)

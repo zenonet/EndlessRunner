@@ -1,4 +1,4 @@
 class_name AvoidanceDirection
 
-const Left:bool = false
-const Right:bool = true
+const Left:int = -1
+const Right:int = 1

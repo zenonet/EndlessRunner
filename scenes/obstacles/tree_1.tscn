@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://df1v40xilgt3y"]
 
-[ext_resource type="Script" path="res://scenes/obstacles/obstacle.gd" id="1_wprck"]
+[ext_resource type="Script" path="res://obstacle.gd" id="1_4tfkb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_420ov"]
 resource_name = "Material"
@@ -81,7 +81,7 @@ size = Vector3(0.838135, 1, 1)
 
 [node name="tree1" type="StaticBody3D"]
 collision_layer = 2
-script = ExtResource("1_wprck")
+script = ExtResource("1_4tfkb")
 
 [node name="Tree1" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
@@ -93,7 +93,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.578628, 0)
 shape = SubResource("CylinderShape3D_hy4hl")
 
 [node name="AvoidanceTrigger" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.54597)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.82845)
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AvoidanceTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.433915, -0.27132)

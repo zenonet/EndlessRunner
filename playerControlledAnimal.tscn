@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://po8ei8jqt5y5"]
+
+[ext_resource type="PackedScene" uid="uid://cn88blo5k2f5i" path="res://scenes/obstacles/animal.tscn" id="1_bfdyg"]
+[ext_resource type="Script" path="res://PlayerCharacter.gd" id="2_efxkq"]
+
+[node name="Animal" instance=ExtResource("1_bfdyg")]
+isPlayerControlled = true
+
+[node name="PlayerCharacter" type="CSGBox3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.457772, 0)
+size = Vector3(0.3, 0.3, 0.3)
+script = ExtResource("2_efxkq")

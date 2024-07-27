@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://uukraoxk7otu"]
+
+[ext_resource type="Script" path="res://PlayerCharacter.gd" id="1_p08rg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d1447"]
+size = Vector3(1, 1.5874, 1)
+
+[node name="PlayerCharacter" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.457772, 0)
+size = Vector3(0.3, 0.3, 0.3)
+script = ExtResource("1_p08rg")
+
+[node name="AnimalDetectionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.681141, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimalDetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.293701, 0)
+shape = SubResource("BoxShape3D_d1447")

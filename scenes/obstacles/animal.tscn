@@ -5,7 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_0iwrj"]
 size = Vector3(0.5, 0.66, 1)
 
-[node name="Animal" type="StaticBody3D"]
+[node name="Animal" type="Area3D"]
 collision_layer = 2
 script = ExtResource("1_wn6xe")
 
@@ -14,3 +14,5 @@ size = Vector3(0.5, 0.66, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_0iwrj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

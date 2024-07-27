@@ -21,7 +21,7 @@ func _process(delta):
 	for c in get_children():
 		c.position.z -= GameManager.playerSpeed*delta
 		if c.position.z < -chunkLength*2:
-			print("Removing old chunk")
+			# print("Removing old chunk")
 			c.queue_free()
 			generate_chunk()
 
