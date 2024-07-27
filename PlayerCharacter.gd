@@ -8,11 +8,16 @@ const jump_height:float = 3
 const jumpSpeedIncrease:float = 3
 
 var isAnimalAvailable:bool = false
+
+func _ready():
+	if get_parent().is_in_group("animals"):
+		get_parent().on_player_mounted(self)
+
 func _process(delta):
 	if Input.is_action_just_pressed("jump"):
 		if isFlying:
 			if isAnimalAvailable:
-				isLanding = true
+				start_mounting()
 		else:
 			leave_animal()
 			
@@ -28,12 +33,10 @@ func _process(delta):
 			if position.y <= 0:
 				GameManager.game_over.emit()
 		else:
-			position.y = move_toward(position.y, jump_height, 10*delta)
+			position.y = move_toward(position.y, jump_height, 8*delta)
 			if position.y == jump_height:
 				isDecending = true
-		
-		
-		
+
 func _input(event):
 	if !(event is InputEventScreenTouch) && !(event is InputEventScreenDrag): return
 
@@ -42,11 +45,16 @@ func _input(event):
 	var is_release:bool = !is_drag and !event.is_pressed()
 	
 	if isFlying && is_press && isAnimalAvailable:
-		isLanding = true
+		start_mounting()
 	
 	if !isFlying && is_release:
 		leave_animal()
+
+func start_mounting():
+	if !isAnimalAvailable: return
 	
+	isLanding = true
+	availableAnimal.isMountingProccessStarted = true
 func mount_animal():
 	print("Mounting...")
 	GameManager.playerSpeed -= jumpSpeedIncrease
@@ -65,6 +73,8 @@ func leave_animal():
 	
 	# Leave controlled animal
 	reparent(get_parent().get_parent())
+	
+	availableAnimal.isMountingProccessStarted = false
 	
 	# jump
 	isFlying = true

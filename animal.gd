@@ -3,6 +3,7 @@ extends Node3D
 @onready var normalSpeed:float = randf_range(6, 12)
 const avoidanceDistance = 1.2
 @export var isPlayerControlled:bool = false
+var isMountingProccessStarted:bool = false
 
 const HORIZONTAL_SPEED = 8
 
@@ -23,6 +24,10 @@ func _process(delta):
 		# print("relative speed: %f; world speed: %f" % [relativeSpeed, GameManager.playerSpeed])
 		position.z += relativeSpeed*delta
 		global_position.x = move_toward(global_position.x, targetX, 4*delta)
+		
+	if isPlayerControlled || isMountingProccessStarted:
+		# Move the animal towards z=0 to keep it on the screen
+		position.z = move_toward(position.z, 0, 5*delta)
 
 func _input(event):
 	if !isPlayerControlled: return
