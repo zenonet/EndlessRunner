@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://uukraoxk7otu"]
+[gd_scene load_steps=4 format=3 uid="uid://uukraoxk7otu"]
 
 [ext_resource type="Script" path="res://PlayerCharacter.gd" id="1_p08rg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d1447"]
 size = Vector3(3, 10, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5135g"]
+size = Vector3(0.3, 0.3, 0.3)
 
 [node name="PlayerCharacter" type="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.457772, 0)
@@ -19,5 +22,12 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.42386, 0)
 shape = SubResource("BoxShape3D_d1447")
 
+[node name="BodyCollisionDetector" type="Area3D" parent="."]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyCollisionDetector"]
+shape = SubResource("BoxShape3D_5135g")
+
 [connection signal="area_entered" from="AnimalDetectionArea" to="." method="_on_animal_detection_area_entered"]
 [connection signal="area_exited" from="AnimalDetectionArea" to="." method="_on_animal_detection_area_exited"]
+[connection signal="body_entered" from="BodyCollisionDetector" to="." method="_on_body_entered"]

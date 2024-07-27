@@ -17,8 +17,8 @@ func generate_chunk(offset:int = chunkCount/2, chunkId:int = -1):
 	chunk.position.z = offset*chunkLength
 	
 	for c in chunk.get_children():
-		if c.is_in_group("spawn") && randi()%5 == 0:
-			print("Spawing animal in chunk %d at z=%d" % [offset, chunk.global_position.z])
+		if c.is_in_group("spawn") && randi()%4 == 0:
+			# print("Spawing animal in chunk %d at z=%d" % [offset, chunk.global_position.z])
 			var a = animal.instantiate()
 			get_parent().add_child.call_deferred(a)
 			a.global_position = c.global_position
