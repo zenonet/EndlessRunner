@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn88blo5k2f5i"]
+
+[ext_resource type="Script" path="res://animal.gd" id="1_wn6xe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0iwrj"]
+size = Vector3(0.5, 0.66, 1)
+
+[node name="Animal" type="StaticBody3D"]
+collision_layer = 2
+script = ExtResource("1_wn6xe")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(0.5, 0.66, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0iwrj")

@@ -3,7 +3,6 @@ extends Node3D
 @export var chunkScenes:Array[PackedScene]
 @export var chunkCount:float = 3
 @export var chunkLength:float = 4
-@export var speed:float = 12
 
 func _ready():
 	for i in range(chunkCount):
@@ -17,10 +16,10 @@ func generate_chunk(offset:int = chunkCount/2, chunkId:int = -1):
 	chunk.position.z = offset*chunkLength
 	
 func _process(delta):
-	GameManager.distance += speed*delta
-	speed += delta * 0.25
+	GameManager.distance += GameManager.playerSpeed*delta
+	GameManager.playerSpeed += delta * 0.25
 	for c in get_children():
-		c.position.z -= speed*delta
+		c.position.z -= GameManager.playerSpeed*delta
 		if c.position.z < -chunkLength*2:
 			print("Removing old chunk")
 			c.queue_free()
