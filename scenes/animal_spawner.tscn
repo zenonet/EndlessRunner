@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://d0rilpgftwmen"]
+
+[node name="AnimalSpawner1" type="Marker3D" groups=["spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57563, 0.130402, 0)
+gizmo_extents = 0.4

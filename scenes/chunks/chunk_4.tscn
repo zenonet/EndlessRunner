@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://db3npke75r2dj"]
+
+[ext_resource type="PackedScene" uid="uid://bc3sdixew3kgr" path="res://scenes/baseChunk.tscn" id="1_kp520"]
+[ext_resource type="PackedScene" uid="uid://d0rilpgftwmen" path="res://scenes/animal_spawner.tscn" id="2_vnbsh"]
+[ext_resource type="PackedScene" uid="uid://df1v40xilgt3y" path="res://scenes/obstacles/tree_1.tscn" id="3_1lws1"]
+
+[node name="Chunk1" instance=ExtResource("1_kp520")]
+
+[node name="AnimalSpawner1" parent="." index="3" instance=ExtResource("2_vnbsh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00560009, 0.130402, -2.24547)
+
+[node name="AnimalSpawner2" parent="." index="4" instance=ExtResource("2_vnbsh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34431, 0.130402, -3.37149)
+
+[node name="tree1" parent="." index="5" instance=ExtResource("3_1lws1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.256224, 0.0561323, 1.04844)
+direction = 1
+
+[node name="tree2" parent="." index="6" instance=ExtResource("3_1lws1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.816379, 0.0555253, -0.142431)
+
+[node name="tree3" parent="." index="7" instance=ExtResource("3_1lws1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37028, 0.0499997, 1.98989)

@@ -19,4 +19,5 @@ shape = SubResource("BoxShape3D_0iwrj")
 [node name="PlayerPosition" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.344474, 0)
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
