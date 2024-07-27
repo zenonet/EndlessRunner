@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://y4lkaq3pmo8"]
+[gd_scene load_steps=3 format=3 uid="uid://y4lkaq3pmo8"]
 
 [ext_resource type="PackedScene" uid="uid://df1v40xilgt3y" path="res://scenes/obstacles/tree_1.tscn" id="1_c2w2c"]
+[ext_resource type="PackedScene" uid="uid://cn88blo5k2f5i" path="res://scenes/obstacles/animal.tscn" id="2_lxf6q"]
 
-[node name="Chunk1" type="Node3D"]
+[node name="Chunk1" type="Node3D" groups=["chunks"]]
 
 [node name="Ground" type="CSGBox3D" parent="."]
 use_collision = true
@@ -21,3 +22,6 @@ size = Vector3(0.1, 1, 8)
 [node name="tree1" parent="." instance=ExtResource("1_c2w2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.505358, 0, 0.389701)
 direction = 1
+
+[node name="Animal" parent="." instance=ExtResource("2_lxf6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24915, 0.0499997, -2.81866)

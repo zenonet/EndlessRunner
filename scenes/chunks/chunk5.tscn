@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4fiew8kdmhur"]
+[gd_scene load_steps=3 format=3 uid="uid://d4fiew8kdmhur"]
 
 [ext_resource type="PackedScene" uid="uid://df1v40xilgt3y" path="res://scenes/obstacles/tree_1.tscn" id="1_18rc8"]
+[ext_resource type="PackedScene" uid="uid://cn88blo5k2f5i" path="res://scenes/obstacles/animal.tscn" id="2_07jig"]
 
 [node name="Chunk1" type="Node3D"]
 
@@ -24,3 +25,9 @@ direction = 1
 
 [node name="tree2" parent="." instance=ExtResource("1_18rc8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83909, 0, 0.175812)
+
+[node name="Animal" parent="." instance=ExtResource("2_07jig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92099, 0.0500002, -2.78203)
+
+[node name="Animal2" parent="." instance=ExtResource("2_07jig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15701, 0.0500002, 1.45122)

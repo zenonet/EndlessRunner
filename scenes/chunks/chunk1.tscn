@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://df1v40xilgt3y" path="res://scenes/obstacles/tree_1.tscn" id="1_cb2ao"]
 
-[node name="Chunk1" type="Node3D"]
+[node name="Chunk1" type="Node3D" groups=["chunks"]]
 
 [node name="Ground" type="CSGBox3D" parent="."]
 use_collision = true
