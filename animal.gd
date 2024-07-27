@@ -17,6 +17,7 @@ func _process(delta):
 	if isPlayerControlled:
 		var input = Input.get_axis("right", "left") + dragInput
 		position.x += input * HORIZONTAL_SPEED * delta
+		dragInput = 0
 	else:
 		var relativeSpeed:float = normalSpeed - GameManager.playerSpeed
 		# print("relative speed: %f; world speed: %f" % [relativeSpeed, GameManager.playerSpeed])
@@ -26,7 +27,7 @@ func _process(delta):
 func _input(event):
 	if !isPlayerControlled: return
 	
-	var is_drag:bool = event is InputEventScreenDrag or event is InputEventMouseMotion
+	var is_drag:bool = event is InputEventScreenDrag
 	
 	if is_drag:
 		dragInput = event.relative.x * -0.08

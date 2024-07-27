@@ -16,4 +16,5 @@ grow_vertical = 2
 layout_mode = 1
 offset_right = 85.0
 offset_bottom = 38.0
+text = "Distance: 200m"
 script = ExtResource("1_a1atv")

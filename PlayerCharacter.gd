@@ -16,7 +16,6 @@ func _process(delta):
 		else:
 			leave_animal()
 			
-
 	if isFlying:
 		if isLanding:
 			var globalTargetPos:Vector3 = availableAnimal.playerPosition + availableAnimal.global_position
@@ -36,7 +35,9 @@ func _process(delta):
 		
 		
 func _input(event):
-	var is_drag:bool = event is InputEventScreenDrag or event is InputEventMouseMotion
+	if !(event is InputEventScreenTouch) && !(event is InputEventScreenDrag): return
+
+	var is_drag:bool = event is InputEventScreenDrag
 	var is_press:bool = !is_drag and event.is_pressed()
 	var is_release:bool = !is_drag and !event.is_pressed()
 	

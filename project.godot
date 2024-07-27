@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 GameManager="*res://game_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
 [input]
 
 left={
@@ -44,9 +50,9 @@ jump={
 
 [input_devices]
 
-pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
 
 [rendering]
 
 renderer/rendering_method="mobile"
-anti_aliasing/quality/msaa_3d=2
+textures/vram_compression/import_etc2_astc=true
