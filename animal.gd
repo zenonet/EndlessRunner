@@ -41,9 +41,9 @@ func _process(delta):
 		position.z = move_toward(position.z, 0, 5*delta)
 
 func _input(event):
-	if !isPlayerControlled || event.device == -1 : return
+	if !isPlayerControlled: return
 	
-	var is_drag:bool = event is InputEventScreenDrag
+	var is_drag:bool = event is InputEventScreenDrag || (event is InputEventMouseMotion && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT))
 	
 	if is_drag:
 		dragInput = event.relative.x * -0.08
@@ -54,6 +54,10 @@ func on_player_mounted(player):
 	playerNode = player
 	isTimerForWarning = true
 	$ThrowOffTimer.start(10)
+	
+func on_player_dismounted(player):
+	targetX = global_position.x
+	$WarningText.visible = false
 
 func on_avoidance_trigger_detected(direction:int):
 	targetX += direction * avoidanceDistance

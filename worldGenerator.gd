@@ -7,7 +7,7 @@ var animal:PackedScene = preload("res://scenes/obstacles/animal.tscn")
 
 func _ready():
 	for i in range(chunkCount):
-		generate_chunk(i, 0 if i == 0 else -1)
+		generate_chunk(i, 0 if i < 2 else -1)
 
 func generate_chunk(offset:int = chunkCount/2, chunkId:int = -1):
 	var chunk_to_create:PackedScene = chunkScenes.pick_random() if chunkId == -1 else chunkScenes[chunkId]

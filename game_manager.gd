@@ -7,6 +7,8 @@ signal game_over()
 var distance:float = 0
 var playerSpeed:float = 12
 
+var hadInitialTouch:bool = false
+
 func _ready():
 	game_over.connect(on_game_over)
 	get_parent().add_child(mainMenu.instantiate())

@@ -6,7 +6,8 @@
 [node name="Main" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 4.50065e-08, -7.49477e-08, -1.51808e-08, 0.754881, 0.655862, 8.60946e-08, 0.655862, -0.754881, 0, 3.59413, -4.62625)
+transform = Transform3D(-1, 4.50065e-08, -7.49477e-08, -2.51204e-08, 0.673219, 0.739444, 8.37359e-08, 0.739444, -0.673219, 0, 3.59413, -4.22536)
+fov = 99.2
 
 [node name="World" parent="." instance=ExtResource("1_o1bbh")]
 

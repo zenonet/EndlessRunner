@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn88blo5k2f5i"]
+[gd_scene load_steps=4 format=3 uid="uid://cn88blo5k2f5i"]
 
 [ext_resource type="Script" path="res://animal.gd" id="1_wn6xe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7a2n"]
+albedo_color = Color(0.99157, 0.428162, 0.00852165, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0iwrj"]
 size = Vector3(0.5, 0.66, 1)
@@ -12,6 +15,7 @@ script = ExtResource("1_wn6xe")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 size = Vector3(0.5, 0.66, 1)
+material = SubResource("StandardMaterial3D_u7a2n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_0iwrj")

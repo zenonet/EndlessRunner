@@ -42,16 +42,25 @@ func _process(delta):
 
 func _input(event):
 	# event.device is -1 when the touch is emulated by mouse
-	if event.device == -1 || (!(event is InputEventScreenTouch) && !(event is InputEventScreenDrag)): return
+	if event.device == -1 || (!(event is InputEventScreenTouch) && !(event is InputEventMouseButton)): return
+
+	
 
 	var is_drag:bool = event is InputEventScreenDrag
 	var is_press:bool = !is_drag and event.is_pressed()
 	var is_release:bool = !is_drag and !event.is_pressed()
 	
+	if !GameManager.hadInitialTouch:
+		if is_press:
+			GameManager.hadInitialTouch = true
+		return
+	
 	if isFlying && is_press && isAnimalAvailable:
 		start_mounting()
 	
 	if !isFlying && is_release:
+		print(event)
+		print(event.device)
 		leave_animal()
 
 func start_mounting():
@@ -70,7 +79,7 @@ func mount_animal():
 	availableAnimal.on_player_mounted(self)
 	
 func leave_animal():
-	if isFlying: return
+	if isFlying || !isAnimalAvailable: return
 	GameManager.playerSpeed += jumpSpeedIncrease
 	# Make controlled animal self controlled again
 	get_parent().isPlayerControlled = false
@@ -80,7 +89,7 @@ func leave_animal():
 	reparent(get_parent().get_parent())
 	
 	availableAnimal.isMountingProccessStarted = false
-	
+	availableAnimal.on_player_dismounted(self)
 	# jump
 	isFlying = true
 	isDecending = false
