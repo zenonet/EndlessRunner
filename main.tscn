@@ -1,11 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dom5cyc80jp4w"]
+[gd_scene load_steps=3 format=3 uid="uid://dom5cyc80jp4w"]
 
-[ext_resource type="Script" path="res://worldGenerator.gd" id="1_hj7wm"]
-[ext_resource type="PackedScene" uid="uid://dhfoktf0cpwqv" path="res://scenes/chunks/chunk_1.tscn" id="2_618xp"]
-[ext_resource type="PackedScene" uid="uid://cs2svwysu4rkg" path="res://scenes/chunks/chunk_2.tscn" id="3_ym3mj"]
-[ext_resource type="PackedScene" uid="uid://di6wvcdq5ii2u" path="res://scenes/chunks/chunk_3.tscn" id="4_7lpcp"]
-[ext_resource type="PackedScene" uid="uid://db3npke75r2dj" path="res://scenes/chunks/chunk_4.tscn" id="5_g7jfm"]
-[ext_resource type="PackedScene" uid="uid://1eo11b4ypsko" path="res://scenes/chunks/chunk_5.tscn" id="6_wuoru"]
+[ext_resource type="PackedScene" uid="uid://cldf2o5jy76a6" path="res://scenes/world_generator.tscn" id="1_o1bbh"]
 [ext_resource type="PackedScene" uid="uid://po8ei8jqt5y5" path="res://playerControlledAnimal.tscn" id="9_1reu8"]
 
 [node name="Main" type="Node3D"]
@@ -13,14 +8,10 @@
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 4.50065e-08, -7.49477e-08, -1.51808e-08, 0.754881, 0.655862, 8.60946e-08, 0.655862, -0.754881, 0, 3.59413, -4.62625)
 
-[node name="World" type="Node3D" parent="."]
-script = ExtResource("1_hj7wm")
-chunkScenes = Array[PackedScene]([ExtResource("2_618xp"), ExtResource("3_ym3mj"), ExtResource("4_7lpcp"), ExtResource("5_g7jfm"), ExtResource("6_wuoru")])
-chunkCount = 32.0
-chunkLength = 8.0
+[node name="World" parent="." instance=ExtResource("1_o1bbh")]
+
+[node name="PlayerControlledAnimal" parent="." instance=ExtResource("9_1reu8")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.815441, 0.329721, -0.475752, 1.29073e-09, 0.821905, 0.569624, 0.57884, 0.464495, -0.670215, 3.32127, 0, -0.450444)
 shadow_enabled = true
-
-[node name="PlayerControlledAnimal" parent="." instance=ExtResource("9_1reu8")]

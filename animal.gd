@@ -61,6 +61,8 @@ func _on_area_entered(area):
 
 
 func _on_throw_off_timer_timeout():
+	if !isPlayerControlled:
+		return
 	if isTimerForWarning:
 		$WarningText.visible = true
 		$ThrowOffTimer.start(3)

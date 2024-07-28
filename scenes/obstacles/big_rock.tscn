@@ -51,7 +51,10 @@ skeleton = NodePath("")
 shape = SubResource("ConvexPolygonShape3D_8ft26")
 
 [node name="AvoidanceTrigger" parent="." instance=ExtResource("2_rjbhi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.408523, 0, -3.80655)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.503306, 0.0917441, -3.80655)
 
 [node name="AvoidanceTrigger2" parent="." instance=ExtResource("2_rjbhi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.422731, 0, -3.80655)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.578036, 0.0917441, -3.80655)
+
+[connection signal="area_entered" from="AvoidanceTrigger" to="." method="_on_avoidance_trigger_body_entered"]
+[connection signal="area_entered" from="AvoidanceTrigger2" to="." method="_on_avoidance_trigger_body_entered"]

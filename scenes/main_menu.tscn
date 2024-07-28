@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp1nax3xkcpmn"]
+
+[ext_resource type="PackedScene" uid="uid://cldf2o5jy76a6" path="res://scenes/world_generator.tscn" id="1_o1rs2"]
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="2_8phc6"]
+
+[node name="MainMenu" type="Node"]
+
+[node name="3dBackground" type="Node3D" parent="."]
+
+[node name="World" parent="3dBackground" instance=ExtResource("1_o1rs2")]
+chunkCount = 16.0
+
+[node name="Camera3D" type="Camera3D" parent="3dBackground"]
+transform = Transform3D(-1, -4.35911e-08, 7.57797e-08, 0, 0.866818, 0.498624, -8.74228e-08, 0.498624, -0.866818, 0, 1.46866, -2.39754)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="3dBackground"]
+transform = Transform3D(-0.815441, 0.329721, -0.475752, 1.29073e-09, 0.821905, 0.569624, 0.57884, 0.464495, -0.670215, 3.32127, 0, -0.450444)
+shadow_enabled = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_8phc6")
+
+[node name="BoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = 188.0
+offset_right = 39.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="PlayButton" type="Button" parent="Control/BoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="Control/BoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[connection signal="pressed" from="Control/BoxContainer/PlayButton" to="Control" method="_on_play_button_pressed"]
+[connection signal="pressed" from="Control/BoxContainer/QuitButton" to="Control" method="_on_quit_button_pressed"]

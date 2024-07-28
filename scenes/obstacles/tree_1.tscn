@@ -91,3 +91,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.578628, 0)
 shape = SubResource("CylinderShape3D_hy4hl")
 
 [node name="AvoidanceTrigger" parent="." instance=ExtResource("2_8275f")]
+
+[connection signal="area_entered" from="AvoidanceTrigger" to="." method="_on_avoidance_trigger_body_entered"]

@@ -14,4 +14,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34431, 0.130402, -3.37149)
 
 [node name="bigRock" parent="." index="5" instance=ExtResource("3_x3tyn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00788438, 0.0421748, 0.402879)
-direction = -3
