@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://1eo11b4ypsko"]
+
+[ext_resource type="PackedScene" uid="uid://bc3sdixew3kgr" path="res://scenes/baseChunk.tscn" id="1_g8flj"]
+[ext_resource type="PackedScene" uid="uid://d0rilpgftwmen" path="res://scenes/animal_spawner.tscn" id="2_pvd6t"]
+[ext_resource type="PackedScene" uid="uid://b00m38bhom0lw" path="res://scenes/obstacles/big_rock.tscn" id="3_x3tyn"]
+
+[node name="Chunk1" instance=ExtResource("1_g8flj")]
+
+[node name="AnimalSpawner1" parent="." index="3" instance=ExtResource("2_pvd6t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00560009, 0.130402, -2.24547)
+
+[node name="AnimalSpawner2" parent="." index="4" instance=ExtResource("2_pvd6t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34431, 0.130402, -3.37149)
+
+[node name="bigRock" parent="." index="5" instance=ExtResource("3_x3tyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00788438, 0.0421748, 0.402879)
+direction = -3

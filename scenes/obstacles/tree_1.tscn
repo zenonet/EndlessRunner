@@ -1,6 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://df1v40xilgt3y"]
 
 [ext_resource type="Script" path="res://obstacle.gd" id="1_4tfkb"]
+[ext_resource type="PackedScene" uid="uid://do0x60tcly7dq" path="res://scenes/obstacles/avoidance_trigger.tscn" id="2_8275f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_420ov"]
 resource_name = "Material"
@@ -76,9 +77,6 @@ shadow_mesh = SubResource("ArrayMesh_8fok3")
 height = 1.14232
 radius = 0.319713
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xvvk7"]
-size = Vector3(0.838135, 1, 1)
-
 [node name="tree1" type="StaticBody3D" groups=["obstacles"]]
 collision_layer = 2
 script = ExtResource("1_4tfkb")
@@ -92,13 +90,4 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.578628, 0)
 shape = SubResource("CylinderShape3D_hy4hl")
 
-[node name="AvoidanceTrigger" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.82845)
-collision_mask = 3
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AvoidanceTrigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.433915, -0.27132)
-shape = SubResource("BoxShape3D_xvvk7")
-
-[connection signal="area_entered" from="AvoidanceTrigger" to="." method="_on_avoidance_trigger_body_entered"]
+[node name="AvoidanceTrigger" parent="." instance=ExtResource("2_8275f")]
