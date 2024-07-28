@@ -9,7 +9,7 @@ var playerSpeed:float = 12
 
 func _ready():
 	game_over.connect(on_game_over)
-	get_parent().find_child("Root", false, false).add_child(mainMenu.instantiate())
+	get_parent().add_child(mainMenu.instantiate())
 	
 func on_game_over():
 	print("Game over")
@@ -21,7 +21,7 @@ func on_game_over():
 	start_game()
 	
 func start_game():
-	var menu = get_parent().find_child("Root", false, false).find_child("MainMenu", false, false)
+	var menu = get_parent().find_child("MainMenu", false, false)
 	if menu:
 		menu.queue_free()
 

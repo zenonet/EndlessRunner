@@ -8,10 +8,12 @@ const jump_height:float = 3
 const jumpSpeedIncrease:float = 3
 
 var isAnimalAvailable:bool = false
+var flyingSpeedX:float = 0
 
 func _ready():
 	if get_parent().is_in_group("animals"):
 		get_parent().on_player_mounted(self)
+
 
 func _process(delta):
 	if Input.is_action_just_pressed("jump"):
@@ -27,18 +29,20 @@ func _process(delta):
 			global_position = global_position.move_toward(globalTargetPos, 10*delta)
 			if global_position.distance_squared_to(globalTargetPos) < .2:
 				mount_animal()
-			
-		elif isDecending:
-			position.y -= delta
-			if position.y <= 0:
-				GameManager.game_over.emit()
 		else:
-			position.y = move_toward(position.y, jump_height, 8*delta)
-			if position.y == jump_height:
-				isDecending = true
+			if isDecending:
+				position.y -= delta
+				if position.y <= 0:
+					GameManager.game_over.emit()
+			else:
+				position.y = move_toward(position.y, jump_height, 8*delta)
+				if position.y == jump_height:
+					isDecending = true
+			global_position.x -= flyingSpeedX*delta
 
 func _input(event):
-	if !(event is InputEventScreenTouch) && !(event is InputEventScreenDrag): return
+	# event.device is -1 when the touch is emulated by mouse
+	if event.device == -1 || (!(event is InputEventScreenTouch) && !(event is InputEventScreenDrag)): return
 
 	var is_drag:bool = event is InputEventScreenDrag
 	var is_press:bool = !is_drag and event.is_pressed()
@@ -70,6 +74,7 @@ func leave_animal():
 	GameManager.playerSpeed += jumpSpeedIncrease
 	# Make controlled animal self controlled again
 	get_parent().isPlayerControlled = false
+	flyingSpeedX = get_parent().speedX
 	
 	# Leave controlled animal
 	reparent(get_parent().get_parent())

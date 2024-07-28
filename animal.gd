@@ -14,15 +14,26 @@ var dragInput:float = 0
 func _ready():
 	$WarningText.visible = false
 
+var lastX:float = 0
+var speedX:float
+
 func _process(delta):
 	if isPlayerControlled:
 		var input = Input.get_axis("right", "left") + dragInput
+		
+		speedX = global_position.x-lastX / GameManager.playerSpeed*delta
+		lastX = global_position.x
+		
 		position.x += input * HORIZONTAL_SPEED * delta
 		dragInput = 0
 	else:
 		var relativeSpeed:float = normalSpeed - GameManager.playerSpeed
 		# print("relative speed: %f; world speed: %f" % [relativeSpeed, GameManager.playerSpeed])
 		position.z += relativeSpeed*delta
+		
+		# lastX = global_position.x
+		#angle = atan(global_position.x-lastX/normalSpeed)
+		
 		global_position.x = move_toward(global_position.x, targetX, 4*delta)
 		
 	if isPlayerControlled || isMountingProccessStarted:
@@ -30,7 +41,7 @@ func _process(delta):
 		position.z = move_toward(position.z, 0, 5*delta)
 
 func _input(event):
-	if !isPlayerControlled: return
+	if !isPlayerControlled || event.device == -1 : return
 	
 	var is_drag:bool = event is InputEventScreenDrag
 	
